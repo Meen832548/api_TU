@@ -22,17 +22,19 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             body: JSON.stringify(requestBody)
         });
 
-        // Check for HTTP errors
-        if (!response.ok) {
-            const errorData = await response.json();
-            handleErrorResponse(errorData);
-            return; // Exit the function if there's an error
-        }
-
         const data = await response.json();
         displayResponse(data);
     } catch (error) {
-        console.error("Error:", error); // Log the error for debugging
-        displayResponse({ status: false, message: "Network error. Please check your connection and try again." });
+        console.error("Error:", error);
+        displayResponse({ status: false, message: "Network error. Please try again later." });
     }
 });
+
+function displayResponse(data) {
+    const responseMessage = document.getElementById("responseMessage");
+    if (data.status) {
+        responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+    } else {
+        responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
+    }
+}
