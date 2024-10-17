@@ -1,63 +1,63 @@
 body {
-font-family: 'Arial', sans-serif;
-background-image: url('https://live.staticflickr.com/65535/48759425063_1e7e23fbfe_o_d.jpg') ;
-background-repeat: no-repeat;
-background-size: cover;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-margin: 0;
-}
-
-.login-container {
-background-color: #ffffff;
-padding: 30px;
-border-radius: 10px;
-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-width: 350px;
-}
-
-.login-container h2 {
-text-align: center;
-margin-bottom: 20px;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-width: 100%;
-padding: 12px;
-margin: 8px 0;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-sizing: border-box;
-}
-
-.login-container button {
-width: 100%;
-padding: 12px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 16px;
-}
-
-.login-container button:hover {
-background-color: #45a049;
-}
-
-.login-container p {
-text-align: center;
-margin-top: 20px;
-}
-
-.login-container p a {
-color: #4CAF50;
-text-decoration: none;
-}
-
-.login-container p a:hover {
-text-decoration: underline;
-}
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://live.staticflickr.com/65535/48759425063_1e7e23fbfe_o_d.jpg') ;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .login-container {
+    width: 30%;
+    margin-right: 10%;
+  }
+  
+  .login-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #b82318;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .response-box {
+    margin-top: 20px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
