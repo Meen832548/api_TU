@@ -3,34 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thammasat University Login</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Thammasat University Login</h1>
+    <div class="container">
+        <h1>Login to Thammasat University</h1>
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter your username">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
             </div>
             <button type="submit">Login</button>
         </form>
-        <div id="userInfo" class="user-info hidden">
-            <p class="success-message">Login successful!</p>
-            <p><span>Name (TH):</span> <span id="nameTH"></span></p>
-            <p><span>Name (EN):</span> <span id="nameEN"></span></p>
-            <p><span>Email:</span> <span id="email"></span></p>
-            <p><span>Type:</span> <span id="type"></span></p>
-            <p><span>Department:</span> <span id="department"></span></p>
-            <p><span>Faculty:</span> <span id="faculty"></span></p>
-            <p><span>Organization:</span> <span id="organization"></span></p>
-            <button id="logoutBtn">Logout</button>
-        </div>
+        <div id="responseMessage" class="response"></div>
     </div>
     <script src="script.js"></script>
 </body>
