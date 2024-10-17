@@ -4,68 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thammasat University Login</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="login-card">
-            <div class="card-header">
-                <h2>Thammasat University Login</h2>
+    <div class="login-container">
+        <h1>Thammasat University Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username">
             </div>
-            <div class="card-content">
-                <form id="loginForm" class="login-form">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" placeholder="Enter your username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password" required>
-                    </div>
-                    <div id="errorMessage" class="error-message hidden"></div>
-                    <button type="submit" id="submitButton" class="login-button">
-                        <span class="button-text">Login</span>
-                        <div class="loader hidden"></div>
-                    </button>
-                </form>
-
-                <div id="userInfo" class="user-info hidden">
-                    <div class="success-message">Login successful!</div>
-                    <div class="info-grid">
-                        <div class="info-row">
-                            <span class="info-label">Name (TH):</span>
-                            <span id="nameTH" class="info-value"></span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Name (EN):</span>
-                            <span id="nameEN" class="info-value"></span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Email:</span>
-                            <span id="email" class="info-value"></span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Type:</span>
-                            <span id="userType" class="info-value"></span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Department:</span>
-                            <span id="department" class="info-value"></span>
-                        </div>
-                        <div class="info-row" id="facultyRow">
-                            <span class="info-label">Faculty:</span>
-                            <span id="faculty" class="info-value"></span>
-                        </div>
-                        <div class="info-row" id="organizationRow">
-                            <span class="info-label">Organization:</span>
-                            <span id="organization" class="info-value"></span>
-                        </div>
-                    </div>
-                    <button id="logoutButton" class="logout-button">Logout</button>
-                </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
             </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="userInfo" class="user-info hidden">
+            <p class="success-message">Login successful!</p>
+            <p><span>Name (TH):</span> <span id="nameTH"></span></p>
+            <p><span>Name (EN):</span> <span id="nameEN"></span></p>
+            <p><span>Email:</span> <span id="email"></span></p>
+            <p><span>Type:</span> <span id="type"></span></p>
+            <p><span>Department:</span> <span id="department"></span></p>
+            <p><span>Faculty:</span> <span id="faculty"></span></p>
+            <p><span>Organization:</span> <span id="organization"></span></p>
+            <button id="logoutBtn">Logout</button>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
