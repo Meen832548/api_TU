@@ -3,12 +3,12 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
   
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-  
-    // ส่งข้อมูล username และ password ไปที่ API
-    fetch("https://api.example.com/login", {
+
+    fetch("https://restapi.tu.ac.th/api/v2/profile/std/info/?id=6609611824", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Application-Key": "TUd557d5627d777be13cccefa5a9cf99fd78b8f5b5acbb1117b7e37a6040c274022c050cfdc266eec0acd8d44c2aad3731"
       },
       body: JSON.stringify({ username: username, password: password }),
     })
