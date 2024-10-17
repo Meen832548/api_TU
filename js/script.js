@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const password = document.getElementById("password").value;
 
     const apiUrl = "https://restapi.tu.ac.th/api/v1/auth/Ad/verify";
-    const applicationKey = "YOUR_ACCESS_TOKEN"; // Replace with your actual access token
+    const applicationKey = "TUd557d5627d777be13cccefa5a9cf99fd78b8f5b5acbb1117b7e37a6040c274022c050cfdc266eec0acd8d44c2aad3731"; // Replace with your actual access token
 
     const requestBody = {
         UserName: username,
