@@ -14,21 +14,23 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     })
     .then(response => response.json())
     .then(data => {
-      // นำข้อมูลที่ได้จาก API มาแสดงในหน้าเว็บ
       const responseBox = document.getElementById("api-response");
-      if (data.success) {
-        responseBox.innerHTML = `<p>Login successful! Welcome, ${data.username}</p>`;
-        responseBox.style.color = "green";
+      if (data && data.success !== undefined) {
+        if (data.success) {
+          responseBox.innerHTML = `<p>Login successful! Welcome, ${data.username}</p>`;
+          responseBox.style.color = "green";
+        } else {
+          responseBox.innerHTML = `<p>Error: ${data.message || "Unknown error"}</p>`;
+          responseBox.style.color = "red";
+        }
       } else {
-        responseBox.innerHTML = `<p>Error: ${data.message}</p>`;
+        responseBox.innerHTML = `<p>Error: Invalid response from API</p>`;
         responseBox.style.color = "red";
       }
     })
     .catch(error => {
-      // แสดงข้อผิดพลาดหากเกิดปัญหาในการเชื่อมต่อกับ API
       const responseBox = document.getElementById("api-response");
       responseBox.innerHTML = `<p>Failed to connect to the API: ${error.message}</p>`;
       responseBox.style.color = "red";
     });
-  });
-  
+});
