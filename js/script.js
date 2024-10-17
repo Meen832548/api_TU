@@ -13,6 +13,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       body: JSON.stringify({ username: username, password: password }),
     })
     .then(response => {
+      console.log(response.status);
       // ตรวจสอบสถานะของการตอบกลับ
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -20,6 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       return response.json();
     })
     .then(data => {
+      console.log(data);
       const responseBox = document.getElementById("api-response");
 
       // ตรวจสอบสถานะและจัดการข้อมูลที่ได้รับ
