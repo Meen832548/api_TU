@@ -12,23 +12,31 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       },
       body: JSON.stringify({ username: username, password: password }),
     })
-    .then(response => response.json())
+    .then(response => {
+      // ตรวจสอบสถานะของการตอบกลับ
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
       const responseBox = document.getElementById("api-response");
-      
+
       // ตรวจสอบสถานะและจัดการข้อมูลที่ได้รับ
-      if (data && data.status !== undefined) {
+      if (data) {
         if (data.status) {
-          const userData = data.data; // เข้าถึงข้อมูลของผู้ใช้
+          const userData = data; // เข้าถึงข้อมูลของผู้ใช้
 
           responseBox.innerHTML = `
-            <p>Login successful! Welcome, ${userData.displayname_th} (${userData.userName})</p>
+            <p>Login successful! Welcome, ${userData.displayname_th} (${userData.username})</p>
             <p>Email: ${userData.email}</p>
             <p>Faculty: ${userData.faculty}</p>
             <p>Department: ${userData.department}</p>
+            <p>Status: ${userData.tu_status}</p>
           `;
           responseBox.style.color = "green";
         } else {
+          // จัดการข้อความตอบกลับจาก API
           responseBox.innerHTML = `<p>Error: ${data.message || "Unknown error"}</p>`;
           responseBox.style.color = "red";
         }
