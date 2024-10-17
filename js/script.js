@@ -39,12 +39,30 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
 function displayResponse(data) {
     const responseMessage = document.getElementById("responseMessage");
+
     if (data.status) {
+        // แสดงข้อความสำเร็จ
         responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+        
+        // แสดงข้อมูลผู้ใช้
+        let userInfo = `<h3>User Information:</h3><ul>`;
+        userInfo += `<li><strong>Username:</strong> ${data.username || 'N/A'}</li>`;
+        userInfo += `<li><strong>Display Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
+        userInfo += `<li><strong>Display Name (English):</strong> ${data.displayname_en || 'N/A'}</li>`;
+        userInfo += `<li><strong>Email:</strong> ${data.email || 'N/A'}</li>`;
+        userInfo += `<li><strong>Type:</strong> ${data.type || 'N/A'}</li>`;
+        userInfo += `<li><strong>Status:</strong> ${data.tu_status || 'N/A'}</li>`;
+        userInfo += `<li><strong>Department:</strong> ${data.department || 'N/A'}</li>`;
+        userInfo += `<li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization || 'N/A'}</li>`;
+        userInfo += `</ul>`;
+        
+        // แสดงข้อมูลผู้ใช้
+        responseMessage.innerHTML += userInfo; // เพิ่มข้อมูลผู้ใช้ใน HTML
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
 }
+
 
 function handleErrorResponse(errorData) {
     const responseMessage = document.getElementById("responseMessage");
