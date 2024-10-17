@@ -3,7 +3,10 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-image: url('https://live.staticflickr.com/65535/48759425063_1e7e23fbfe_o_d.jpg') ;
-    background-color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed;
     height: 100vh;
     display: flex;
     justify-content: flex-end;
