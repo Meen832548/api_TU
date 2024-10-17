@@ -44,25 +44,31 @@ function displayResponse(data) {
     console.log("API Response:", data);
     
     if (data.status) {
-        // Display success message and user information
-        responseMessage.innerHTML = `
-            <p style="color: green;">${data.message}</p>
-            <h3>User Information:</h3>
-            <ul>
-                <li><strong>Username:</strong> ${data.username || 'N/A'}</li>
-                <li><strong>Display Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>
-                <li><strong>Display Name (English):</strong> ${data.displayname_en || 'N/A'}</li>
-                <li><strong>Email:</strong> ${data.email || 'N/A'}</li>
-                <li><strong>Type:</strong> ${data.type || 'N/A'}</li>
-                <li><strong>Status:</strong> ${data.tu_status || data.StatusEmp || 'N/A'}</li>
-                <li><strong>Department:</strong> ${data.department || 'N/A'}</li>
-                <li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization || 'N/A'}</li>
-            </ul>
-        `;
+        // Display success message
+        responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+        
+        // Check for the type of user and display appropriate information
+        if (data.type === "student" || data.type === "employee") {
+            const userInfo = `
+                <h3>User Information:</h3>
+                <ul>
+                    <li><strong>Username:</strong> ${data.username || 'N/A'}</li>
+                    <li><strong>Display Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>
+                    <li><strong>Display Name (English):</strong> ${data.displayname_en || 'N/A'}</li>
+                    <li><strong>Email:</strong> ${data.email || 'N/A'}</li>
+                    <li><strong>Type:</strong> ${data.type || 'N/A'}</li>
+                    <li><strong>Status:</strong> ${data.tu_status || data.StatusEmp || 'N/A'}</li>
+                    <li><strong>Department:</strong> ${data.department || 'N/A'}</li>
+                    <li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization || 'N/A'}</li>
+                </ul>
+            `;
+            responseMessage.innerHTML += userInfo; // Append user info to the message
+        }
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
 }
+
 
 
 function handleErrorResponse(errorData) {
