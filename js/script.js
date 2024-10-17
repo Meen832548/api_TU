@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch("https://restapi.tu.ac.th/api/v2/profile/std/info/?id=6609611824", {
+    fetch("https://restapi.tu.ac.th/api/v1/auth/Ad/verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
