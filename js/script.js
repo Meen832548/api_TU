@@ -39,8 +39,23 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
 function displayResponse(data) {
     const responseMessage = document.getElementById("responseMessage");
+    
     if (data.status) {
-        responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+        // Display success message and user information
+        responseMessage.innerHTML = `
+            <p style="color: green;">${data.message}</p>
+            <h3>User Information:</h3>
+            <ul>
+                <li><strong>Username:</strong> ${data.username}</li>
+                <li><strong>Display Name (Thai):</strong> ${data.displayname_th}</li>
+                <li><strong>Display Name (English):</strong> ${data.displayname_en}</li>
+                <li><strong>Email:</strong> ${data.email}</li>
+                <li><strong>Type:</strong> ${data.type}</li>
+                <li><strong>Status:</strong> ${data.tu_status || data.StatusEmp}</li>
+                <li><strong>Department:</strong> ${data.department}</li>
+                <li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization}</li>
+            </ul>
+        `;
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
