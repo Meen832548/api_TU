@@ -15,9 +15,18 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     .then(response => response.json())
     .then(data => {
       const responseBox = document.getElementById("api-response");
-      if (data && data.success !== undefined) {
-        if (data.success) {
-          responseBox.innerHTML = `<p>Login successful! Welcome, ${data.username}</p>`;
+      
+      // ตรวจสอบสถานะและจัดการข้อมูลที่ได้รับ
+      if (data && data.status !== undefined) {
+        if (data.status) {
+          const userData = data.data; // เข้าถึงข้อมูลของผู้ใช้
+
+          responseBox.innerHTML = `
+            <p>Login successful! Welcome, ${userData.displayname_th} (${userData.userName})</p>
+            <p>Email: ${userData.email}</p>
+            <p>Faculty: ${userData.faculty}</p>
+            <p>Department: ${userData.department}</p>
+          `;
           responseBox.style.color = "green";
         } else {
           responseBox.innerHTML = `<p>Error: ${data.message || "Unknown error"}</p>`;
