@@ -41,6 +41,7 @@ function displayResponse(data) {
     const responseMessage = document.getElementById("responseMessage");
     if (data.status) {
         responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+        responseMessage.innerHTML = `<p style="color: green;">${data.type}</p>`;
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
