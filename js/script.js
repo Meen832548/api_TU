@@ -40,16 +40,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 function displayResponse(data) {
     const responseMessage = document.getElementById("responseMessage");
     if (data.status) {
-        responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.type}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.username}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.tu_status}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${statusid.type}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.displayname_th}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.displayname_en}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.email}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.department}</p>`;
-        responseMessage.innerHTML = `<p style="color: black;">${data.faculty}</p>`;
+        responseMessage.innerHTML = `<p style="color: green;">${data.type}</p>`;
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
