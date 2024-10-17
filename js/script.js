@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch("https://restapi.tu.ac.th/api/v1/auth/Ad/verify", {
+    fetch("https://restapi.tu.ac.th/api/v1/auth/Ad/verify2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,18 +13,16 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       body: JSON.stringify({ username: username, password: password }),
     })
     .then(response => {
-      console.log(response.status);
-      // ตรวจสอบสถานะของการตอบกลับ
+      console.log(`HTTP Status: ${response.status}`); // แสดงสถานะการตอบกลับ
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log(data);
+      console.log(data); // แสดงข้อมูลที่ตอบกลับจาก API
       const responseBox = document.getElementById("api-response");
 
-      // ตรวจสอบสถานะและจัดการข้อมูลที่ได้รับ
       if (data) {
         if (data.status) {
           const userData = data; // เข้าถึงข้อมูลของผู้ใช้
@@ -38,7 +36,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
           `;
           responseBox.style.color = "green";
         } else {
-          // จัดการข้อความตอบกลับจาก API
           responseBox.innerHTML = `<p>Error: ${data.message || "Unknown error"}</p>`;
           responseBox.style.color = "red";
         }
@@ -51,5 +48,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       const responseBox = document.getElementById("api-response");
       responseBox.innerHTML = `<p>Failed to connect to the API: ${error.message}</p>`;
       responseBox.style.color = "red";
+      console.error(error); // แสดงข้อผิดพลาดในคอนโซล
     });
 });
