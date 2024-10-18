@@ -40,10 +40,8 @@ function displayResponse(data) {
     const responseMessage = document.getElementById("responseMessage");
 
     if (data.status) {
-        // แสดงข้อความสำเร็จ
         responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
         
-        // แสดงข้อมูลผู้ใช้
         let userInfo = `<h3>User Information:</h3><ul>`;
         userInfo += `<li><strong>Student ID</strong> ${data.username || 'N/A'}</li>`;
         userInfo += `<li><strong>Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
@@ -55,8 +53,8 @@ function displayResponse(data) {
         userInfo += `<li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization || 'N/A'}</li>`;
         userInfo += `</ul>`;
         
-        // แสดงข้อมูลผู้ใช้
-        responseMessage.innerHTML += userInfo; // เพิ่มข้อมูลผู้ใช้ใน HTML
+        
+        responseMessage.innerHTML += userInfo;
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
