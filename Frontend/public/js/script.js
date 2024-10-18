@@ -1,11 +1,11 @@
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     const apiUrl = "https://restapi.tu.ac.th/api/v1/auth/Ad/verify";
-    const applicationKey = "TUd557d5627d777be13cccefa5a9cf99fd78b8f5b5acbb1117b7e37a6040c274022c050cfdc266eec0acd8d44c2aad3731"; // Replace with your actual access token
+    const applicationKey = "TUd557d5627d777be13cccefa5a9cf99fd78b8f5b5acbb1117b7e37a6040c274022c050cfdc266eec0acd8d44c2aad3731"; 
 
     const requestBody = {
         UserName: username,
@@ -22,11 +22,10 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             body: JSON.stringify(requestBody)
         });
 
-        // Check for HTTP errors
         if (!response.ok) {
             const errorData = await response.json();
             handleErrorResponse(errorData);
-            return; // Exit the function if there's an error
+            return; 
         }
 
         const data = await response.json();
@@ -46,9 +45,9 @@ function displayResponse(data) {
         
         // แสดงข้อมูลผู้ใช้
         let userInfo = `<h3>User Information:</h3><ul>`;
-        userInfo += `<li><strong>Username:</strong> ${data.username || 'N/A'}</li>`;
-        userInfo += `<li><strong>Display Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
-        userInfo += `<li><strong>Display Name (English):</strong> ${data.displayname_en || 'N/A'}</li>`;
+        userInfo += `<li><strong>Student ID</strong> ${data.username || 'N/A'}</li>`;
+        userInfo += `<li><strong>Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
+        userInfo += `<li><strong>Name (English):</strong> ${data.displayname_en || 'N/A'}</li>`;
         userInfo += `<li><strong>Email:</strong> ${data.email || 'N/A'}</li>`;
         userInfo += `<li><strong>Type:</strong> ${data.type || 'N/A'}</li>`;
         userInfo += `<li><strong>Status:</strong> ${data.tu_status || 'N/A'}</li>`;
