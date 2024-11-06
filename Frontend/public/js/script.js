@@ -29,8 +29,11 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         }
 
         const data = await response.json();
+        
         displayResponse(data);
+        // Pass data to savedata function
     } catch (error) {
+        alert("ไม่สามารถ login ได้");
         console.error("Error:", error);
         displayResponse({ status: false, message: "Network error. Please try again later." });
     }
@@ -41,7 +44,7 @@ function displayResponse(data) {
 
     if (data.status) {
         responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
-        
+        savedata(data);
         let userInfo = `<h3>User Information:</h3><ul>`;
         userInfo += `<li><strong>Student ID</strong> ${data.username || 'N/A'}</li>`;
         userInfo += `<li><strong>Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
@@ -53,26 +56,24 @@ function displayResponse(data) {
         userInfo += `<li><strong>Faculty/Organization:</strong> ${data.faculty || data.organization || 'N/A'}</li>`;
         userInfo += `</ul>`;
         
-        
         responseMessage.innerHTML += userInfo;
     } else {
         responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
 }
 
-
 function handleErrorResponse(errorData) {
     const responseMessage = document.getElementById("responseMessage");
     
     switch (errorData.status) {
         case false:
-            if (errorData.message.includes("User or Password Invalid!")) {
+            if (errorData.message.alert("User or Password Invalid!")) {
                 responseMessage.innerHTML = `<p style="color: red;">Username or password is incorrect.</p>`;
-            } else if (errorData.message.includes("Could not read the request body!")) {
+            } else if (errorData.message.alert("Could not read the request body!")) {
                 responseMessage.innerHTML = `<p style="color: red;">Error reading request. Please check your input.</p>`;
-            } else if (errorData.message.includes("The request body has error!")) {
+            } else if (errorData.message.alert("The request body has error!")) {
                 responseMessage.innerHTML = `<p style="color: red;">Invalid input. Please try again.</p>`;
-            } else if (errorData.message.includes("invalid token")) {
+            } else if (errorData.message.alert("invalid token")) {
                 responseMessage.innerHTML = `<p style="color: red;">Invalid access token. Please contact support.</p>`;
             } else {
                 responseMessage.innerHTML = `<p style="color: red;">${errorData.message}</p>`;
@@ -88,4 +89,24 @@ function handleErrorResponse(errorData) {
             responseMessage.innerHTML = `<p style="color: red;">An unknown error occurred. Please try again.</p>`;
             break;
     }
+}
+
+async function savedata(data) {
+    const header={
+        "Content-Type": "application/json"
+    }
+    const body = JSON.stringify() = {
+        eng_name: data.displayname_en,
+        faculty: data.faculty,
+        email: data.email,
+        type: data.type,
+        user_name: data.displayname_th
+    };
+    const url ="http://localhost:8080/api/students/add"
+    const response= await fetch(url, {
+        method: "POST",
+        headers: header,
+        body: body,
+       
+    });
 }
