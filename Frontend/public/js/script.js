@@ -29,7 +29,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         }
 
         const data = await response.json();
-        
+        savedata(data);
         displayResponse(data);
         // Pass data to savedata function
     } catch (error) {
@@ -44,7 +44,6 @@ function displayResponse(data) {
 
     if (data.status) {
         responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
-        savedata(data);
         let userInfo = `<h3>User Information:</h3><ul>`;
         userInfo += `<li><strong>Student ID</strong> ${data.username || 'N/A'}</li>`;
         userInfo += `<li><strong>Name (Thai):</strong> ${data.displayname_th || 'N/A'}</li>`;
@@ -95,13 +94,13 @@ async function savedata(data) {
     const header={
         "Content-Type": "application/json"
     }
-    const body = JSON.stringify() = {
+    const body = JSON.stringify({
+        email: data.email,
         eng_name: data.displayname_en,
         faculty: data.faculty,
-        email: data.email,
-        type: data.type,
+        type : data.type,
         user_name: data.displayname_th
-    };
+    });
     const url ="http://localhost:8080/api/students/add"
     const response= await fetch(url, {
         method: "POST",
@@ -109,4 +108,5 @@ async function savedata(data) {
         body: body,
        
     });
+    
 }
